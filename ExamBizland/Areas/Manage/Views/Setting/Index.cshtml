@@ -1,0 +1,52 @@
+﻿@using ExamBizland.View_Models
+@{
+    ViewData["Title"] = "Index";
+    int Count = 1;
+}
+
+@model PaginateVM<Setting>
+
+<div class="col-lg-10 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Team Table</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Key
+                            </th>
+                            <th>
+                                Value
+                            </th>
+                            <th>
+                                Setting
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <td>
+                                    @(Count++)
+                                </td>
+                                <td>
+                                    @item.Key
+                                </td>
+                                <td>
+                                    @item.Value
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="mdi mdi-pencil"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
